@@ -32,10 +32,10 @@ type CreateTaskRequest struct {
 }
 
 type UpdateTaskRequest struct {
-	Title       *string `json:"title"`
-	Description *string `json:"description"`
-	Status      *Status `json:"status"`
-	ExpiresAt   *int64  `json:"expiresAt"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Status      Status `json:"status"`
+	ExpiresAt   int64  `json:"expiresAt"`
 }
 
 func (task *Task) BeforeCreate(tx *gorm.DB) (err error) {
