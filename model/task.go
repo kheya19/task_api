@@ -41,5 +41,10 @@ type UpdateTaskRequest struct {
 func (task *Task) BeforeCreate(tx *gorm.DB) (err error) {
 	task.ID = uuid.New()
 	task.CreatedAt = time.Now().Unix()
+
+	if task.ExpiresAt <= task.CreatedAt {
+		task.Status = StatusExpired
+	}
+
 	return
 }
