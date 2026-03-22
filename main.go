@@ -22,7 +22,7 @@ func main() {
 	app.Get("/helath", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{"status": "ok"})
 	})
-	api := app.Group("\api")
+	api := app.Group("/api")
 	tasks := api.Group("/tasks")
 	tasks.Use(middleware.AutoExpire)
 	tasks.Post("/", handlers.CreateTask)
@@ -33,7 +33,7 @@ func main() {
 
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "3000"
+		port = "3000pp"
 	}
 	log.Fatal(app.Listen(":" + port))
 }
